@@ -9,7 +9,7 @@
         <meta name="title" content="{{$meta->title}}" />
         <meta name="keywords" content="{{$meta->keys}}" />
         @endisset
-        <title>HealtAi - healthy information</title>
+        <title>HealtAi - {{$blog->title}}</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('/assets/favicon.ico') }}" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
