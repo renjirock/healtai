@@ -5,6 +5,7 @@ use Illuminate\Console\Command;
 use App\Models\Blog;
 use App\Models\ingredient;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Meta;
 
 
 class RecipeCron extends Command
@@ -56,6 +57,13 @@ class RecipeCron extends Command
         $blog->img = $saveImage;
         $blog->content = str_replace("\n", "<p>", $post);
         $blog->author = 'MedicalAI';
+        $meta = new Meta;
+        $meta->title = $title;
+        $keys = $this->getMeta(str_replace("\n", "<p>", $post), 'generates at least 100 meta keys based on the following content: ');
+        $meta->keys = $keys->choices[0]->text;
+        $description = $this->getMeta(str_replace("\n", "<p>", $post), 'generates a description for the meta description of a blog based on the following content: ');
+        $meta->description = $description->choices[0]->text;
+        $blog->meta_id = $meta->save();
         $ingredient = new ingredient;
         $ingredient->ingredients = json_encode($missedIngredients);
         $ingredient->save();
@@ -168,6 +176,36 @@ class RecipeCron extends Command
         $response = curl_exec($curl);
         curl_close($curl);
 
+        return json_decode($response);
+    }
+    private function getMeta($content, $prompt)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => ENV('CHATGPT_API') . '/v1/completions',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => '{
+                "model": "text-davinci-003",
+                "prompt": "' . $prompt . $content . '",
+                "temperature": 0,
+                "max_tokens": 500
+            }',
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Bearer ' . ENV('CHATGPT_KEY'),
+                'Content-Type: application/json'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
         return json_decode($response);
     }
 }

@@ -3,8 +3,12 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
+        @isset($meta->description)
+        <meta name="description" content="{{ $meta->description}}" />
+        <meta name="author" content="{{$blog->author}}" />
+        <meta name="title" content="{{$meta->title}}" />
+        <meta name="keywords" content="{{$meta->keys}}" />
+        @endisset
         <title>HealtAi - healthy information</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('/assets/favicon.ico') }}" />
         <!-- Font Awesome icons (free version)-->
@@ -31,8 +35,8 @@
                     <!-- Post meta content-->
                     <div class="text-muted fst-italic mb-2">Posted on {{$blog->created_at}} by {{$blog->author}}</div>
                     <!-- Post categories-->
-                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
-                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
+                    {{-- <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
+                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> --}}
                 </div>
             </div>
         </header>
@@ -46,12 +50,14 @@
                         <figure class="mb-4"><img class="img-fluid rounded" src="{{ asset('/storage/images/' . $blog->img)}}" alt="{{$blog->title}}" /></figure>
                         <!-- Post content-->
                         <section class="mb-5">
+                            @if ($ingredientsList != null)
                             <p class="fw-bolder mb-4 mt-5">Ingredients</p>
                             <ul class="list-group list-group-flush">
                                 @foreach ($ingredientsList as $insgredients)
                                     <li class="list-group-item">{{$insgredients->original}}</li>
                                 @endforeach
                               </ul>
+                            @endif
                             <p class="fw-bolder mb-4 mt-5">{!! $blog->content !!}</p>
                             <script>
                                 const p = document.getElementsByTagName("p");
@@ -77,7 +83,7 @@
                         </div>
                     </div>
                     <!-- Categories widget-->
-                    <div class="card mb-4">
+                    {{-- <div class="card mb-4">
                         <div class="card-header">Categories</div>
                         <div class="card-body">
                             <div class="row">
@@ -97,11 +103,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- Side widget-->
                     <div class="card mb-4">
-                        <div class="card-header">Side Widget</div>
-                        <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+
                     </div>
                 </div>
             </div>
