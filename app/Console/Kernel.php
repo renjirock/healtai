@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\PapersCron;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -16,6 +17,7 @@ class Kernel extends ConsoleKernel
 
         Commands\RecipeCron::class,
         Commands\NewsCron::class,
+        Commands\PapersCron::class,
     ];
 
     /**
@@ -28,6 +30,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('cron:recipe')->weeklyOn(1, '8:00');
         $schedule->command('cron:news')->weeklyOn(3, '8:00');
+        $schedule->command('cron:papers')->daily();
     }
 
     /**
