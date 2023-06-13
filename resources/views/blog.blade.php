@@ -9,7 +9,7 @@
         <meta name="title" content="{{$meta->title}}" />
         <meta name="keywords" content="{{$meta->keys}}" />
         @endisset
-        <title>HealtAi - healthy information</title>
+        <title>HealtAi - {{$blog->title}}</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('/assets/favicon.ico') }}" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -21,6 +21,8 @@
         <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{ asset('/css/styles.css') }}" rel="stylesheet" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8894681818507521"
+     crossorigin="anonymous"></script>
     </head>
 
     <body id="page-top">
