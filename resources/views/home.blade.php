@@ -3,8 +3,9 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
+        <meta name="description" content="This medical and health blog provides up-to-date information on the latest medical news, treatments, and health tips for the US audience. Get the latest medical advice and stay informed on the latest health trends." />
+        <meta name="author" content="medicalAi" />
+        <meta name="keywords" content="Medical, Health, Healthcare, Wellness, Disease, Treatment, Prevention, Nutrition, Exercise, Mental Health, US, American, Doctor, Physician, Hospital, Clinic, Medical Advice, Medical News" />
         <title>HealtAi - healthy information</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('/assets/favicon.ico') }}" />
         <!-- Font Awesome icons (free version)-->
@@ -17,6 +18,8 @@
         <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{ asset('/css/styles.css') }}" rel="stylesheet" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8894681818507521"
+     crossorigin="anonymous"></script>
     </head>
 
     <body id="page-top">

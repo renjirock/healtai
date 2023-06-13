@@ -21,6 +21,8 @@
         <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{ asset('/css/styles.css') }}" rel="stylesheet" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8894681818507521"
+     crossorigin="anonymous"></script>
     </head>
 
     <body id="page-top">
