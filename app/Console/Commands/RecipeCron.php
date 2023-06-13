@@ -50,7 +50,6 @@ class RecipeCron extends Command
         $title = $recipe[$number]->title;
         $post = $response->choices[0]->message->content;
         $image = $this->getImage($ingredients,  $recipe[$number]->title);
-        dd($image);
         $saveImage = $this->saveImage($image->data[0]->url);
         $blog  = new Blog;
         $blog->title = $title;
